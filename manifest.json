@@ -1,0 +1,17 @@
+{
+    "name": "FootBall",
+    "short_name": "FootBall",
+    "theme_color": "#4527a0",
+    "background_color": "#4527a0",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "Images/MS_ICON.png",
+            "sizes": "552x552",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

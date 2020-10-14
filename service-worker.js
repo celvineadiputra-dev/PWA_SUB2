@@ -1,4 +1,4 @@
-const CACHE_NAME = "FootBall-01";
+const CACHE_NAME = "FootBall-02";
 const urlsToCache = [
     "/",
     "/manifest.json",

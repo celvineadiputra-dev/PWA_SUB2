@@ -84,51 +84,38 @@
   </head>
 
   <body>
-    <nav class="deep-purple accent-3">
-      <div class="nav-wrapper container">
-        <a href="#" class="brand-logo">FootBall</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-          ><i class="material-icons"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="white"
-              width="32px"
-              height="32px"
-            >
-              <path d="M0 0h24v24H0z" fill="none" />
-              <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-              /></svg></i
-        ></a>
-        <ul class="menunav right hide-on-med-and-down"></ul>
-      </div>
-    </nav>
-
-    <ul class="sidenav deep-purple accent-3" id="mobile-demo">
-      <li class="white-text flex justify-content-center">
-        <h3>FootBall</h3>
-      </li>
-    </ul>
-
-    <div id="root"></div>
-
-    <div class="page-footer deep-purple accent-3">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col s12 m4">
-            <h1>Dicoding</h1>
-          </div>
-          <div class="col s12 m4">
-            <h1>BDD</h1>
-          </div>
-          <div class="col s12 m4">
-            <h1>PWA</h1>
-          </div>
+    <div class="flex h-min-100vh flex-direct-column">
+      <nav class="navy-blue">
+        <div class="nav-wrapper container">
+          <a href="#" class="brand-logo">FootBall</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+            ><i class="material-icons"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="white"
+                width="32px"
+                height="32px"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                /></svg></i
+          ></a>
+          <ul class="menunav right hide-on-med-and-down"></ul>
         </div>
-      </div>
-      <div class="footer-copyright deep-purple accent-4">
-        <div class="container text-center bold">
+      </nav>
+
+      <ul class="sidenav navy-blue" id="mobile-demo">
+        <li class="white-text flex justify-content-center">
+          <h3>FootBall</h3>
+        </li>
+      </ul>
+
+      <div id="root"></div>
+
+      <div class="footer-copyright dark-blue">
+        <div class="container text-center bold white-text p-2">
           &copy; 2020 Celvine Adi Putra | Dicoding
         </div>
       </div>
@@ -136,6 +123,7 @@
 
     <script src="Js/materialize.min.js"></script>
     <script src="Js/Main.js"></script>
+    <script src="Js/api.js"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {

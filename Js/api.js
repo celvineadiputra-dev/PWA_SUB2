@@ -19,7 +19,15 @@ const getDataKompetisi = (url) => {
     },
   }).then((response) => response.json());
 };
-getDataKompetisi(url).then((data) => setDataKlasmenLiga(data));
+let countData = 0;
+getDataKompetisi(url).then((data) => {
+  setDataKlasmenLiga(data);
+  document.getElementById("valueData").addEventListener("change", (e) => {
+    countData = e.target.value;
+    document.getElementById("HomeCard").innerHTML = "";
+    getDataKompetisi(url).then((data) => setDataKlasmenLiga(data));
+  });
+});
 
 const setDataKlasmenLiga = (data) => {
   console.log(data);
@@ -28,10 +36,14 @@ const setDataKlasmenLiga = (data) => {
   for (let index = 0; index < data.standings.length; index++) {
     let type = data.standings[index].type;
     data.standings[index].table.forEach((value) => {
-      //   console.log(value);
-      if (i == 3) {
-        document.getElementById("HomeCard").innerHTML = cardHtml;
-        return;
+      console.log(countData + "DATA");
+      if (countData != 0) {
+        console.log(i);
+        if (i == countData) {
+          countData = 0;
+          document.getElementById("HomeCard").innerHTML = cardHtml;
+          return;
+        }
       }
       i++;
       cardHtml += `
@@ -79,5 +91,9 @@ const setDataKlasmenLiga = (data) => {
             </div>
         `;
     });
+    if (countData == 0) {
+      console.log("XXXXX");
+      document.getElementById("HomeCard").innerHTML = cardHtml;
+    }
   }
 };

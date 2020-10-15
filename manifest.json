@@ -8,7 +8,7 @@
     "start_url": "/",
     "icons": [
         {
-            "src": "Images/MS_ICON.png",
+            "src": "Images/Icon/MS_ICON.png",
             "sizes": "552x552",
             "type": "image/png",
             "purpose": "any maskable"

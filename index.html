@@ -139,6 +139,10 @@
       } else {
         console.log("ServiceWorker belum didukung browser ini.");
       }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        getDataFootball();
+      });
     </script>
   </body>
 </html>

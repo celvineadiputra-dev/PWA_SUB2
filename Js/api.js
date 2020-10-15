@@ -5,7 +5,7 @@ const id_liga = [2001, 2002, 2003, 2021, 2014, 2015, 2019];
 const randomLiga = () => {
   const index = Math.floor(Math.random() * 7);
   console.log(index);
-  return id_liga[index];
+  return 2001;
 };
 
 const url = `${baseUrl}competitions/${randomLiga()}/standings`;
@@ -19,15 +19,31 @@ const getDataKompetisi = (url) => {
     },
   }).then((response) => response.json());
 };
+
 let countData = 0;
-getDataKompetisi(url).then((data) => {
-  setDataKlasmenLiga(data);
-  document.getElementById("valueData").addEventListener("change", (e) => {
-    countData = e.target.value;
-    document.getElementById("HomeCard").innerHTML = "";
-    getDataKompetisi(url).then((data) => setDataKlasmenLiga(data));
+const getDataFootball = () => {
+  if ("caches" in window) {
+    console.log("true");
+    caches.match(url).then(function (res) {
+      if (res) {
+        res.json().then((data) => {
+          console.log(data);
+          setDataKlasmenLiga(data);
+        });
+      }
+    });
+  }
+
+  getDataKompetisi(url).then((data) => {
+    setDataKlasmenLiga(data);
+    document.getElementById("valueData").addEventListener("change", (e) => {
+      countData = 0;
+      countData = e.target.value;
+      document.getElementById("HomeCard").innerHTML = "";
+      getDataKompetisi(url).then((data) => setDataKlasmenLiga(data));
+    });
   });
-});
+};
 
 const setDataKlasmenLiga = (data) => {
   console.log(data);
@@ -36,11 +52,8 @@ const setDataKlasmenLiga = (data) => {
   for (let index = 0; index < data.standings.length; index++) {
     let type = data.standings[index].type;
     data.standings[index].table.forEach((value) => {
-      console.log(countData + "DATA");
       if (countData != 0) {
-        console.log(i);
         if (i == countData) {
-          countData = 0;
           document.getElementById("HomeCard").innerHTML = cardHtml;
           return;
         }
@@ -92,7 +105,6 @@ const setDataKlasmenLiga = (data) => {
         `;
     });
     if (countData == 0) {
-      console.log("XXXXX");
       document.getElementById("HomeCard").innerHTML = cardHtml;
     }
   }

@@ -60,7 +60,7 @@ const setDataKlasmenLiga = (data) => {
                 <div class="card">
                     <div class="card-image">
                         <img src="${value.team.crestUrl}" width="150px">
-                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red" id="btnSave"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
                         <h6 class="black-text font-weight-bold">${value.team.name}</h6>

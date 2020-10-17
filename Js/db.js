@@ -1,20 +1,23 @@
-const dbPromised = idb.open("football-sub2Pwa", 1, (upgradeDB) => {
-  const footBallObjectStore = upgradeDB.createObjectStore("itemFootBall", {
-    keyPath: "ID",
+var dbPromised = idb.open("football", 1, (upgradeDB) => {
+  let footBallObjectStore = upgradeDB.createObjectStore("teamLove", {
+    keyPath: "id",
   });
   footBallObjectStore.createIndex("namaTeam", "name", { unique: false });
 });
 
 const SaveFootBall = (item) => {
   dbPromised
-    .then((db) => {
-      let tx = db.transaction("teamSave", "readwrite");
-      var store = tx.objectStore("teamSAve");
-      console.log(item);
-      // store.add();
-      return tx.complete();
+    .then(function (db) {
+      console.log(db);
+      let tx = db.transaction("teamLove", "readwrite");
+      let store = tx.objectStore("teamLove");
+      store.add(item);
+      return tx.complete;
     })
     .then(() => {
       console.log("berhasil di save");
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };

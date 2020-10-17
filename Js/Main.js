@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const el = document.querySelectorAll(".sidenav");
   M.Sidenav.init(el);
-
-  document.getElementById("btnSave").addEventListener("click", () => {});
-
   loadNav();
 
   function loadNav() {

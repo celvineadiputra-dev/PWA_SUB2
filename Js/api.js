@@ -48,10 +48,22 @@ const getDataFootball = () => {
   });
 };
 
+const btnSaveFunction = () => {
+  Array.from(document.getElementsByClassName("btn-floating-save")).forEach(
+    function (element) {
+      element.addEventListener("click", (e) => {
+        SaveFootBall({
+          id: e.target.getAttribute("data-id"),
+          name: e.target.getAttribute("data-name"),
+        });
+      });
+    }
+  );
+};
+
 const setDataKlasmenLiga = (data) => {
   console.log(data);
   let cardHtml = "";
-  let i = 0;
   for (let index = 0; index < data.standings.length; index++) {
     let type = data.standings[index].type;
     data.standings[index].table.forEach((value) => {
@@ -60,7 +72,7 @@ const setDataKlasmenLiga = (data) => {
                 <div class="card">
                     <div class="card-image">
                         <img src="${value.team.crestUrl}" width="150px">
-                        <a class="btn-floating halfway-fab waves-effect waves-light red" id="btnSave"><i class="material-icons">add</i></a>
+                        <a class="btn-floating btn-floating-save halfway-fab waves-effect waves-light red"><i data-id="${value.team.id}" data-name="${value.team.name}" class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
                         <h6 class="black-text font-weight-bold">${value.team.name}</h6>
@@ -101,5 +113,6 @@ const setDataKlasmenLiga = (data) => {
         `;
     });
     document.getElementById("HomeCard").innerHTML = cardHtml;
+    btnSaveFunction();
   }
 };

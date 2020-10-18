@@ -21,3 +21,36 @@ const SaveFootBall = (item) => {
       console.log(err);
     });
 };
+
+const getAllDataLove = () => {
+  return new Promise((resolve, reject) => {
+    dbPromised
+      .then((db) => {
+        const tx = db.transaction("teamLove", "readonly");
+        var store = tx.objectStore("teamLove");
+        return store.getAll();
+      })
+      .then((items) => {
+        resolve(items);
+      });
+  });
+};
+
+const checkIDTeam = (id) => {
+  return new Promise(function (resolve, reject) {
+    dbPromised
+      .then(function (db) {
+        var tx = db.transaction("teamLove", "readonly");
+        var store = tx.objectStore("teamLove");
+        return store.get(id);
+      })
+      .then(function (data) {
+        console.log(data);
+        if (data != undefined) {
+          resolve(true);
+        } else {
+          reject(false);
+        }
+      });
+  });
+};

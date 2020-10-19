@@ -59,7 +59,7 @@ const getSavedTeam = () => {
                   <div class="card">
                       <div class="card-image">
                           <img src="${item.crestUrl}" width="150px">
-                          <a class="btn-floating btn-floating-save halfway-fab waves-effect waves-light red"><i data-id="${item.id}" class="material-icons">delete_forever</i></a>
+                          <a class="btn-floating btn-floating-delete halfway-fab waves-effect waves-light red"><i data-id="${item.id}" data-name="${item.name}" class="material-icons">delete_forever</i></a>
                       </div>
                       <div class="card-content">
                           <h6 class="black-text font-weight-bold">${item.name}</h6>
@@ -68,6 +68,7 @@ const getSavedTeam = () => {
               </div>`;
     });
     document.getElementById("FavoritCard").innerHTML = cardHtml;
+    btnDeleteFunction();
   });
 };
 
@@ -102,6 +103,21 @@ const btnSaveFunction = () => {
             }
           }
         );
+      });
+    }
+  );
+};
+
+const btnDeleteFunction = () => {
+  Array.from(document.getElementsByClassName("btn-floating-delete")).forEach(
+    (elm) => {
+      elm.addEventListener("click", (e) => {
+        deleteData(
+          e.target.getAttribute("data-id"),
+          e.target.getAttribute("data-name")
+        ).then((e) => {
+          getSavedTeam();
+        });
       });
     }
   );

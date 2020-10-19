@@ -63,3 +63,27 @@ const checkIDTeam = (id) => {
       });
   });
 };
+
+const deleteData = (id, name) => {
+  return new Promise((resolve, reject) => {
+    dbPromised
+      .then((db) => {
+        const tx = db.transaction("teamLove", "readwrite");
+        tx.objectStore("teamLove").delete(id);
+        return tx.complete;
+      })
+      .then((data) => {
+        if (Notification.permission === "granted") {
+          navigator.serviceWorker.ready.then((regist) => {
+            regist.showNotification(`Tim ${name} berhasil dihapus`, {
+              body: `${name} Berhasil di hapus`,
+              icon: "/Images/Icon/MS_ICON.png",
+              badge: "/Images/Favicon/ms-icon-144x144.png",
+            });
+          });
+        }
+        console.log("Berhasil delete");
+        resolve(true);
+      });
+  });
+};

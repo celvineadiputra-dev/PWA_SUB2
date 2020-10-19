@@ -49,7 +49,7 @@ const checkIDTeam = (id) => {
         if (data != undefined) {
           resolve(true);
         } else {
-          reject(false);
+          resolve(false);
         }
       });
   });

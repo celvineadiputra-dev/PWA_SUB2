@@ -49,24 +49,45 @@ const getDataFootball = () => {
 };
 
 const getSavedTeam = () => {
+  cardHtml = "";
   idbase = getAllDataLove();
+  idbase.then((e) => {
+    console.log(e);
+    e.forEach((item) => {
+      // console.log(item.id);
+      cardHtml += `<div class="col s12 m4">
+                  <div class="card">
+                      <div class="card-image">
+                          <img src="${item.crestUrl}" width="150px">
+                          <a class="btn-floating btn-floating-save halfway-fab waves-effect waves-light red"><i data-id="${item.id}" class="material-icons">delete_forever</i></a>
+                      </div>
+                      <div class="card-content">
+                          <h6 class="black-text font-weight-bold">${item.name}</h6>
+                      </div>
+                  </div>
+              </div>`;
+    });
+    document.getElementById("FavoritCard").innerHTML = cardHtml;
+  });
 };
 
 const btnSaveFunction = () => {
   Array.from(document.getElementsByClassName("btn-floating-save")).forEach(
     function (element) {
       element.addEventListener("click", (e) => {
-        checkIDTeam(e.target.getAttribute("data-id").toString()).then((e) => {
-          console.log(e);
-        });
-        if (true) {
-          console.log("sudah ada");
-        } else {
-          SaveFootBall({
-            id: e.target.getAttribute("data-id"),
-            name: e.target.getAttribute("data-name"),
-          });
-        }
+        checkIDTeam(e.target.getAttribute("data-id").toString()).then(
+          (status) => {
+            if (status) {
+              console.log("sudah ada");
+            } else {
+              SaveFootBall({
+                id: e.target.getAttribute("data-id"),
+                name: e.target.getAttribute("data-name"),
+                crestUrl: e.target.getAttribute("data-crestUrl"),
+              });
+            }
+          }
+        );
       });
     }
   );
@@ -83,7 +104,7 @@ const setDataKlasmenLiga = (data) => {
                 <div class="card">
                     <div class="card-image">
                         <img src="${value.team.crestUrl}" width="150px">
-                        <a class="btn-floating btn-floating-save halfway-fab waves-effect waves-light red"><i data-id="${value.team.id}" data-name="${value.team.name}" class="material-icons">add</i></a>
+                        <a class="btn-floating btn-floating-save halfway-fab waves-effect waves-light indigo darken-3"><i data-id="${value.team.id}" data-name="${value.team.name}" data-crestUrl="${value.team.crestUrl}" class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
                         <h6 class="black-text font-weight-bold">${value.team.name}</h6>

@@ -87,6 +87,7 @@ const btnSaveFunction = () => {
                       body: `${e.target.getAttribute(
                         "data-name"
                       )} sudah pernah di simpan`,
+                      icon: "/Images/MS_ICON.png",
                     }
                   );
                 });

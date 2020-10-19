@@ -79,6 +79,18 @@ const btnSaveFunction = () => {
           (status) => {
             if (status) {
               console.log("sudah ada");
+              if (Notification.permission === "granted") {
+                navigator.serviceWorker.ready.then((regist) => {
+                  regist.showNotification(
+                    `Tim ${e.target.getAttribute("data-name")} Gagal disimpan`,
+                    {
+                      body: `${e.target.getAttribute(
+                        "data-name"
+                      )} sudah pernah di simpan`,
+                    }
+                  );
+                });
+              }
             } else {
               SaveFootBall({
                 id: e.target.getAttribute("data-id"),

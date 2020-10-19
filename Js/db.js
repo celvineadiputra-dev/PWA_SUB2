@@ -16,6 +16,13 @@ const SaveFootBall = (item) => {
     })
     .then(() => {
       console.log("berhasil di save");
+      if (Notification.permission === "granted") {
+        navigator.serviceWorker.ready.then((regist) => {
+          regist.showNotification(`Tim ${item.name} berhasil disimpan`, {
+            body: `${item.name} Berhasil di simpan`,
+          });
+        });
+      }
     })
     .catch((err) => {
       console.log(err);

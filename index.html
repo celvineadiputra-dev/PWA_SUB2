@@ -141,6 +141,23 @@
       } else {
         console.log("ServiceWorker belum didukung browser ini.");
       }
+
+      const requestNotif = () => {
+        Notification.requestPermission().then((res) => {
+          if (res === "denied") {
+            console.log("Notifikasi tidak ada izin");
+            return;
+          } else if (res === "default") {
+            console.log("Menutup Box");
+            return;
+          }
+          console.log("Notif diizinkan");
+        });
+      };
+
+      "Notification" in window
+        ? requestNotif()
+        : console.log("broser tidak support notif");
     </script>
   </body>
 </html>

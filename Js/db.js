@@ -20,7 +20,8 @@ const SaveFootBall = (item) => {
         navigator.serviceWorker.ready.then((regist) => {
           regist.showNotification(`Tim ${item.name} berhasil disimpan`, {
             body: `${item.name} Berhasil di simpan`,
-            icon: "/Images/MS_ICON.png",
+            icon: "/Images/Icon/MS_ICON.png",
+            badge: "/Images/Favicon/ms-icon-144x144.png",
           });
         });
       }

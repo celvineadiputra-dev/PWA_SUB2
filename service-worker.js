@@ -25,6 +25,7 @@ const urlsToCache = [
   "Images/Favicon/favicon-32x32.png",
   "Images/Favicon/favicon-96x96.png",
   "Images/Favicon/favicon-16x16.png",
+  "Images/Favicon/ms-icon-144x144.png",
   "Images/Icon/MS_ICON.png",
   "/Fonts/MA.woff2",
 ];

@@ -70,3 +70,17 @@ self.addEventListener("activate", function (event) {
     })
   );
 });
+self.addEventListener("push", (e) => {
+  let body;
+  e.data ? (body = e.data.text()) : (body = "pesan push tidak playload");
+  let options = {
+    body: body,
+    icon: "Images/Icon/MS_ICON.png",
+    vibrate: [100, 50, 100],
+    data: {
+      dateOfArrival: Date.now(),
+      primaryKey: 1,
+    },
+  };
+  e.waitUntil(self.registration.showNotification("Push Notification", options));
+});

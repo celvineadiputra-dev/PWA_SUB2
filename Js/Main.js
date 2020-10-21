@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const content = document.querySelector("#root");
         if (page == "Home") {
           getDataFootball();
-        } else if (page == "X") {
+        } else if (page == "Score") {
+          getDataScore();
         } else if (page == "Favorit") {
           getSavedTeam();
         }

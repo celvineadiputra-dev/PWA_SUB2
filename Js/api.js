@@ -10,6 +10,7 @@ const randomLiga = () => {
 };
 
 const url = `${baseUrl}competitions/${randomLiga()}/standings`;
+const score = `${baseUrl}competitions/SA/scorers?limit=20`;
 
 const getDataKompetisi = (url) => {
   return fetch(url, {
@@ -45,6 +46,23 @@ const getDataFootball = () => {
   }
   getDataKompetisi(url).then((data) => {
     setDataKlasmenLiga(data);
+  });
+};
+
+const getDataScore = () => {
+  if ("caches" in window) {
+    caches.match(score).then(function (res) {
+      if (res) {
+        res.json().then((data) => {
+          console.log(data);
+          setDataScore(data);
+          return;
+        });
+      }
+    });
+  }
+  getDataKompetisi(score).then((data) => {
+    setDataScore(data);
   });
 };
 
@@ -177,4 +195,17 @@ const setDataKlasmenLiga = (data) => {
     document.getElementById("HomeCard").innerHTML = cardHtml;
     btnSaveFunction();
   }
+};
+const setDataScore = (data) => {
+  // console.log(data);
+  let tableHTML = "";
+  data.scorers.forEach((e, i) => {
+    tableHTML += `<tr><td>${i + 1}</td><td>${e.team.name}</td><td>${
+      e.numberOfGoals
+    }</td><td>${e.player.name}</td><td>${e.player.position}</td><td>${
+      data.season.startDate
+    }</td><td>${data.season.endDate}</td></tr>`;
+  });
+  document.getElementById("ScoreCard").innerHTML = tableHTML;
+  // btnSaveFunction();
 };

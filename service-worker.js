@@ -1,4 +1,4 @@
-const CACHE_NAME = "FootBall-06";
+const CACHE_NAME = "FootBall-07";
 const urlsToCache = [
   "/",
   "/manifest.json",
@@ -12,6 +12,7 @@ const urlsToCache = [
   "/nav.html",
   "/Pages/Home.html",
   "/Pages/Favorit.html",
+  "/Pages/Score.html",
   "Images/Favicon/apple-icon-57x57.png",
   "Images/Favicon/apple-icon-60x60.png",
   "Images/Favicon/apple-icon-72x72.png",

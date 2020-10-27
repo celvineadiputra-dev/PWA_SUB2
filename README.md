@@ -2,7 +2,7 @@
 File ini adalah hasil saya dalam submission 2 dicoding
 silahkan dijadikan reverensi untuk submission kamu
 
-Submission ini mendapatkan <b>bintang 3 / 5</b> dari reviewer dicoding
+Submission ini mendapatkan <b>bintang 3⭐ / 5⭐</b> dari reviewer dicoding
 
 <a href="https://mypwa2.netlify.app/">Demo</a>
 
@@ -12,5 +12,5 @@ karena asset disini hanya digunakan untuk pembelajaran saja, Terimakasih
 
 <br/>
 <hr>
-Salama, dari Palembang
+Salam, dari Palembang
 Celvine Adi Putra, 23 Oktober 2020
